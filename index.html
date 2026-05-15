@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Many Hands Market — Summer Solstice 2026</title>
+<meta name="description" content="A warm-hearted gathering at a converted East Yorkshire dairy barn. Sunday 21 June 2026, 4–8pm. For the people growing, making, and healing.">
+
+<!-- Open Graph (Facebook, WhatsApp, iMessage, LinkedIn) -->
+<meta property="og:title" content="Many Hands Market — Summer Solstice 2026">
+<meta property="og:description" content="A warm-hearted gathering at a converted East Yorkshire dairy barn. Sunday 21 June 2026, 4–8pm. For the people growing, making, and healing.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://manyhandsmarket.org">
+<meta property="og:image" content="https://manyhandsmarket.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Many Hands Market — Summer Solstice 2026">
+<meta name="twitter:description" content="A warm-hearted gathering at a converted East Yorkshire dairy barn. Sunday 21 June 2026, 4–8pm.">
+<meta name="twitter:image" content="https://manyhandsmarket.org/og-image.png">
+
+<!-- Favicon (heart emoji works inline as a quick placeholder) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><path d=%22M 32,52 C 32,52 12,38 12,24 C 12,16 19,11 25,11 C 28,11 31,13 32,16 C 33,13 36,11 39,11 C 45,11 52,16 52,24 C 52,38 32,52 32,52 Z%22 fill=%22%23E8B8B0%22 stroke=%22%233D4D34%22 stroke-width=%223%22/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+
+<!--
+  =======================================================
+  CONFIGURATION — UPDATE THESE TWO URLS BEFORE GOING LIVE
+  =======================================================
+
+  Both URLs are stored as constants in the <script> tag near the bottom of this file.
+
+  1. RSVP_URL — the link both "Hold me a place" buttons open.
+     Replace with your Humanitix or Eventbrite event URL once created.
+     Until then, both buttons fall back to scrolling to the email form.
+
+  2. SIGNUP_URL — your Google Apps Script Web App URL.
+     This captures email signups directly into a Google Sheet.
+     See the deployment guide for setup (it's ~10 minutes).
+     Until then, submissions show a confirmation but don't save anywhere.
+
+  Search this file for "CONFIGURATION" to find the constants.
+-->
+
+
+<style>
+  :root {
+    --bg: #F4ECDF;
+    --bg-alt: #EDE2D0;
+    --paper: #FBF6EB;
+    --green: #3D4D34;
+    --green-soft: #6B7A5C;
+    --pink: #E8B8B0;
+    --pink-soft: #F2D4CE;
+    --terracotta: #C0573B;
+    --terracotta-soft: #D9826A;
+    --text: #2B241D;
+    --text-soft: #6B5D4F;
+    --line: #C9B89F;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    line-height: 1.65;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(at 15% 20%, rgba(232,184,176,0.18) 0%, transparent 45%),
+      radial-gradient(at 85% 75%, rgba(61,77,52,0.08) 0%, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(192,87,59,0.04) 0%, transparent 70%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.10 0 0 0 0.08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* === TOP BAR === */
+  .topbar {
+    padding: 34px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--green);
+    border-bottom: 1px solid var(--line);
+    gap: 24px;
+  }
+
+  .topbar .lockup {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-variation-settings: 'opsz' 32, 'SOFT' 80;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .topbar .lockup-mark {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .topbar .meta {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    color: var(--text-soft);
+    font-size: 14px;
+  }
+
+  /* === HERO === */
+  .hero {
+    padding: 80px 0 120px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--terracotta);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-eyebrow::before {
+    content: '— ';
+    color: var(--terracotta);
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(56px, 8.5vw, 132px);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 144, 'SOFT' 60;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--green);
+    margin-bottom: 36px;
+  }
+
+  .hero-title .ital {
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    color: var(--terracotta);
+    display: inline-block;
+  }
+
+  .hero-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.6vw, 32px);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 48px;
+    max-width: 540px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    border-left: 1px solid var(--line);
+    padding-left: 20px;
+  }
+
+  .hero-meta-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-soft);
+    margin-bottom: 6px;
+  }
+
+  .hero-meta-value {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    font-variation-settings: 'opsz' 32, 'SOFT' 70;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  .hero-meta-value em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 32px;
+    background: var(--green);
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 500;
+    font-variation-settings: 'opsz' 32, 'SOFT' 90;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-cta:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(192,87,59,0.25);
+  }
+
+  .hero-cta .arrow {
+    transition: transform 0.4s ease;
+  }
+
+  .hero-cta:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* === HEART MOTIF === */
+  .heart-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 480px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heart-svg {
+    width: 100%;
+    height: 100%;
+    animation: breathe 5s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  .ring {
+    fill: none;
+    stroke: var(--terracotta);
+    opacity: 0.25;
+  }
+
+  .ring-1 { animation: ringPulse 4s ease-out infinite; }
+  .ring-2 { animation: ringPulse 4s ease-out infinite 1.3s; }
+  .ring-3 { animation: ringPulse 4s ease-out infinite 2.6s; }
+
+  @keyframes ringPulse {
+    0% { opacity: 0.4; transform: scale(0.7); transform-origin: center; }
+    70% { opacity: 0; }
+    100% { opacity: 0; transform: scale(1.15); transform-origin: center; }
+  }
+
+  .heart-stage svg .heart-fill {
+    fill: var(--pink);
+  }
+
+  .heart-stage svg .heart-stroke {
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .heart-stage svg .botanical {
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+
+  .heart-stage svg .botanical-leaf {
+    fill: var(--green);
+  }
+
+  /* === SECTION DIVIDER === */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 80px 0 60px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .divider-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    font-size: 18px;
+    letter-spacing: 0.05em;
+  }
+
+  /* === VENUE SHOWCASE === */
+  .venue-showcase {
+    margin: 40px -32px 80px;
+    position: relative;
+  }
+
+  .venue-showcase-frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--green);
+  }
+
+  .venue-showcase-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    filter: saturate(1.05) contrast(0.98);
+  }
+
+  .venue-showcase-caption {
+    max-width: 1240px;
+    margin: 32px auto 0;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .venue-showcase-caption-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 28px);
+    color: var(--green);
+    line-height: 1.4;
+    max-width: 640px;
+    font-weight: 400;
+    font-variation-settings: 'opsz' 32, 'SOFT' 90;
+  }
+
+  .venue-showcase-caption-text .em {
+    color: var(--terracotta);
+  }
+
+  .venue-showcase-credit {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green-soft);
+    white-space: nowrap;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+  }
+
+  .venue-showcase-credit::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--terracotta);
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 900px) {
+    .venue-showcase {
+      margin: 20px -24px 40px;
+    }
+    .venue-showcase-image {
+      aspect-ratio: 4 / 3;
+    }
+    .venue-showcase-caption {
+      padding: 0 24px;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  /* === VISION === */
+  .vision {
+    padding: 60px 0 100px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .vision-label {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vision-label::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .vision-pull {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 144, 'SOFT' 80;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--green);
+  }
+
+  .vision-pull .ital {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .vision-body p {
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .vision-body p:first-child::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    line-height: 1;
+    float: left;
+    margin: 4px 12px 0 0;
+    color: var(--terracotta);
+    font-weight: 500;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  }
+
+  .vision-signature {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-soft);
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* === WHAT'S THERE === */
+  .offerings {
+    padding: 100px 0;
+    background: var(--bg-alt);
+    margin: 0 -32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    position: relative;
+  }
+
+  .offerings-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 80px;
+    max-width: 700px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 144, 'SOFT' 70;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--green);
+  }
+
+  .section-title .ital {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .offering {
+    background: var(--bg-alt);
+    padding: 48px 36px;
+    transition: background 0.4s ease;
+    position: relative;
+  }
+
+  .offering:hover {
+    background: var(--paper);
+  }
+
+  .offering-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--terracotta);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+
+  .offering-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    font-variation-settings: 'opsz' 32, 'SOFT' 80;
+    color: var(--green);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .offering-body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-soft);
+  }
+
+  /* === VENDORS === */
+  .vendors {
+    padding: 120px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .vendor-list {
+    columns: 2;
+    column-gap: 32px;
+    margin: 32px 0 40px;
+  }
+
+  .vendor-list span {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 400;
+    font-variation-settings: 'opsz' 32, 'SOFT' 80;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--line);
+    break-inside: avoid;
+  }
+
+  .vendor-list span:nth-child(odd) {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .vendor-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--green);
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--green);
+    padding-bottom: 4px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .vendor-cta:hover {
+    color: var(--terracotta);
+    border-color: var(--terracotta);
+    gap: 18px;
+  }
+
+  /* === SUN / SOLSTICE GRAPHIC === */
+  .sun-mark {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sun-mark svg {
+    width: 100%;
+    animation: rotate 80s linear infinite;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* === EMAIL SIGNUP === */
+  .signup {
+    background: var(--green);
+    color: var(--paper);
+    margin: 0 -32px;
+    padding: 120px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .signup-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .signup::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,184,176,0.18) 0%, transparent 70%);
+  }
+
+  .signup::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192,87,59,0.12) 0%, transparent 70%);
+  }
+
+  .signup-eyebrow {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--pink);
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .signup-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 76px);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 144, 'SOFT' 80;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    margin-bottom: 32px;
+  }
+
+  .signup-title .ital {
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .signup-body {
+    font-size: 19px;
+    line-height: 1.65;
+    color: rgba(251,246,235,0.85);
+    margin-bottom: 56px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .signup-form {
+    display: flex;
+    gap: 0;
+    max-width: 560px;
+    margin: 0 auto 32px;
+    background: var(--paper);
+    border-radius: 100px;
+    padding: 6px;
+    align-items: center;
+  }
+
+  .signup-input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    padding: 16px 24px;
+    font-family: 'Newsreader', serif;
+    font-size: 17px;
+    color: var(--text);
+    outline: none;
+  }
+
+  .signup-input::placeholder {
+    color: var(--text-soft);
+    font-style: italic;
+  }
+
+  .signup-button {
+    background: var(--terracotta);
+    color: var(--paper);
+    border: 0;
+    padding: 16px 28px;
+    border-radius: 100px;
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .signup-button:hover {
+    background: var(--terracotta-soft);
+    transform: scale(1.02);
+  }
+
+  .signup-options {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .signup-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--pink-soft);
+    font-size: 14px;
+    cursor: pointer;
+    font-style: italic;
+  }
+
+  .signup-option input {
+    accent-color: var(--pink);
+  }
+
+  .signup-confirmation {
+    display: none;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--pink);
+    margin-top: 32px;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .signup-confirmation.show {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === FOOTER === */
+  .footer {
+    padding: 80px 0 60px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    margin-top: 0;
+  }
+
+  .footer-mark {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 32px;
+  }
+
+  .footer-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--green);
+    font-variation-settings: 'opsz' 32, 'SOFT' 100;
+    margin-bottom: 32px;
+    letter-spacing: 0.01em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+
+  .footer-links a:hover {
+    color: var(--terracotta);
+    border-bottom-color: var(--terracotta);
+  }
+
+  .footer-credit {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 24px;
+  }
+
+  /* === SCROLL REVEAL === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .topbar { padding: 20px 0; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 40px 0 60px;
+      gap: 40px;
+    }
+    .heart-stage { max-width: 280px; margin: 0 auto; }
+    .vision { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 60px; }
+    .vendors { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
+    .offerings { padding: 60px 24px; margin: 0 -24px; }
+    .offerings-grid { grid-template-columns: 1fr; }
+    .signup { padding: 80px 24px; margin: 0 -24px; }
+    .signup-form { flex-direction: column; border-radius: 24px; padding: 16px; gap: 12px; }
+    .signup-input { text-align: center; padding: 12px; }
+    .signup-button { width: 100%; padding: 16px; }
+    .vendor-list { columns: 1; }
+    .hero-meta { gap: 24px; }
+    .divider { padding: 40px 0 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="lockup">
+      <svg class="lockup-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 32,52 C 32,52 12,38 12,24 C 12,16 19,11 25,11 C 28,11 31,13 32,16 C 33,13 36,11 39,11 C 45,11 52,16 52,24 C 52,38 32,52 32,52 Z"
+              fill="#E8B8B0" stroke="#3D4D34" stroke-width="3" stroke-linejoin="round"/>
+      </svg>
+      <span>Many Hands Market</span>
+    </div>
+    <div class="meta">Summer Solstice 2026 · A gathering</div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow">A new community gathering, in the longest light of the year</div>
+      <h1 class="hero-title">From field<br>to <span class="ital">hearth</span>.</h1>
+      <p class="hero-tagline">A warm-hearted gathering at a converted East Yorkshire dairy barn — for the people growing, making, and healing in this corner of the world.</p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Date</div>
+          <div class="hero-meta-value">Sunday, 21 June</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Time</div>
+          <div class="hero-meta-value">4 — 8<em>pm</em></div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Where</div>
+          <div class="hero-meta-value">The Beverley Barn · <em>East Yorkshire</em></div>
+        </div>
+      </div>
+
+      <a href="#signup" data-rsvp-url="{{RSVP_URL}}" class="hero-cta rsvp-link">
+        <span>Hold me a place</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <!-- HEART MOTIF -->
+    <div class="heart-stage">
+      <svg class="heart-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- pulsing rings -->
+        <circle class="ring ring-1" cx="200" cy="210" r="120" stroke-width="1"/>
+        <circle class="ring ring-2" cx="200" cy="210" r="120" stroke-width="1"/>
+        <circle class="ring ring-3" cx="200" cy="210" r="120" stroke-width="1"/>
+
+        <!-- decorative botanical sprigs around heart -->
+        <g class="botanical">
+          <!-- top sun rays -->
+          <line x1="200" y1="40" x2="200" y2="65"/>
+          <line x1="160" y1="48" x2="170" y2="72"/>
+          <line x1="240" y1="48" x2="230" y2="72"/>
+          <line x1="125" y1="68" x2="142" y2="88"/>
+          <line x1="275" y1="68" x2="258" y2="88"/>
+        </g>
+
+        <!-- left botanical sprig -->
+        <g class="botanical" transform="translate(50,260) rotate(-20)">
+          <path d="M 0 0 Q 20 -20 50 -10 Q 65 0 75 -15"/>
+          <ellipse class="botanical-leaf" cx="20" cy="-12" rx="6" ry="3" transform="rotate(-30 20 -12)"/>
+          <ellipse class="botanical-leaf" cx="40" cy="-15" rx="6" ry="3" transform="rotate(-20 40 -15)"/>
+          <ellipse class="botanical-leaf" cx="60" cy="-15" rx="6" ry="3" transform="rotate(-10 60 -15)"/>
+        </g>
+
+        <!-- right botanical sprig -->
+        <g class="botanical" transform="translate(350,260) rotate(20) scale(-1,1)">
+          <path d="M 0 0 Q 20 -20 50 -10 Q 65 0 75 -15"/>
+          <ellipse class="botanical-leaf" cx="20" cy="-12" rx="6" ry="3" transform="rotate(-30 20 -12)"/>
+          <ellipse class="botanical-leaf" cx="40" cy="-15" rx="6" ry="3" transform="rotate(-20 40 -15)"/>
+          <ellipse class="botanical-leaf" cx="60" cy="-15" rx="6" ry="3" transform="rotate(-10 60 -15)"/>
+        </g>
+
+        <!-- the heart -->
+        <path class="heart-fill" d="M 200,295
+          C 200,295 110,235 110,175
+          C 110,140 138,118 165,118
+          C 184,118 197,130 200,145
+          C 203,130 216,118 235,118
+          C 262,118 290,140 290,175
+          C 290,235 200,295 200,295 Z"/>
+        <path class="heart-stroke" d="M 200,295
+          C 200,295 110,235 110,175
+          C 110,140 138,118 165,118
+          C 184,118 197,130 200,145
+          C 203,130 216,118 235,118
+          C 262,118 290,140 290,175
+          C 290,235 200,295 200,295 Z"/>
+
+        <!-- inner heart line for handmade feel -->
+        <path class="heart-stroke" d="M 200,265
+          C 200,265 140,225 140,180
+          C 140,155 158,140 175,142
+          C 187,144 196,153 200,165" stroke-width="1.2" opacity="0.5"/>
+
+        <!-- small star/seed at top -->
+        <g transform="translate(200,200)">
+          <circle r="4" fill="#C0573B"/>
+          <line class="botanical" x1="0" y1="-10" x2="0" y2="-7" stroke-width="1.5"/>
+          <line class="botanical" x1="0" y1="7" x2="0" y2="10" stroke-width="1.5"/>
+          <line class="botanical" x1="-10" y1="0" x2="-7" y2="0" stroke-width="1.5"/>
+          <line class="botanical" x1="7" y1="0" x2="10" y2="0" stroke-width="1.5"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-mark">i.</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- VISION -->
+  <section class="vision reveal">
+    <div>
+      <div class="vision-label">Our small, big idea</div>
+      <h2 class="vision-pull">For the people, <span class="ital">by the people.</span></h2>
+    </div>
+    <div class="vision-body">
+      <p>This is a long-held dream made small enough to begin. A gathering place for the families, growers, makers and healers who want a softer, kinder way of feeding and being fed — one that begins in the soil and ends at the kitchen table, with many hands in between.</p>
+      <p>You'll find people sharing what they grow, what they preserve, what they spin, what they brew. Skills passed across generations and skills found yesterday. Things to taste, things to take home, things to learn.</p>
+      <p>It's an experiment in a different kind of marketplace: one that runs on quality, neighbourliness, and the quiet conviction that we can build a freer, kinder way of living together — beginning here, beginning now.</p>
+      <div class="vision-signature">— Karina Clappison, founder &amp; field-keeper</div>
+    </div>
+  </section>
+
+  <!-- VENUE SHOWCASE -->
+  <section class="venue-showcase reveal">
+    <div class="venue-showcase-frame">
+      <img class="venue-showcase-image" src="beverley-barn.jpg" alt="An aerial view of The Beverley Barn at golden hour, surrounded by fields of wheat and East Yorkshire countryside" loading="lazy">
+    </div>
+    <div class="venue-showcase-caption">
+      <p class="venue-showcase-caption-text">A converted dairy barn at the edge of <span class="em">wheat fields and East Yorkshire light.</span> Run by Karina's daughter — a quietly beautiful place to begin.</p>
+      <span class="venue-showcase-credit">The Beverley Barn</span>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-mark">ii.</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- WHAT'S THERE -->
+  <section class="offerings reveal">
+    <div class="offerings-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">— What you'll find on the day</div>
+        <h2 class="section-title">A few hours of <span class="ital">good things,</span><br>shared in good light.</h2>
+      </div>
+
+      <div class="offerings-grid">
+        <div class="offering">
+          <div class="offering-num">01</div>
+          <h3 class="offering-title">Local growers, makers &amp; healers</h3>
+          <p class="offering-body">Smallholders, herbalists, weavers, woodworkers, beekeepers — each bringing what they grow, make, or heal with.</p>
+        </div>
+        <div class="offering">
+          <div class="offering-num">02</div>
+          <h3 class="offering-title">Demonstrations &amp; workshops</h3>
+          <p class="offering-body">Sowing seeds. Spinning wool. Preserving the harvest. Hands-on, no fuss, all welcome.</p>
+        </div>
+        <div class="offering">
+          <div class="offering-num">03</div>
+          <h3 class="offering-title">Real food, slowly made</h3>
+          <p class="offering-body">Raw produce, surplus from local kitchens, fresh juices, honey, wholesome things to taste and to take home.</p>
+        </div>
+        <div class="offering">
+          <div class="offering-num">04</div>
+          <h3 class="offering-title">Music as the day softens</h3>
+          <p class="offering-body">Live, acoustic, easy. Something to sit with as the sun begins its long, slow goodnight.</p>
+        </div>
+        <div class="offering">
+          <div class="offering-num">05</div>
+          <h3 class="offering-title">A bonfire at golden hour</h3>
+          <p class="offering-body">A small fire to mark the longest day. Bring a story, bring nothing — both are welcome.</p>
+        </div>
+        <div class="offering">
+          <div class="offering-num">06</div>
+          <h3 class="offering-title">Children &amp; ice cream</h3>
+          <p class="offering-body">Little ones welcome. There'll be a kids' corner, room to wander, and yes — an ice cream van.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-mark">iii.</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- VENDORS -->
+  <section class="vendors reveal">
+    <div>
+      <div class="vision-label">A call to makers</div>
+      <h2 class="section-title" style="font-size: clamp(36px, 5vw, 64px);">Are you growing, <span class="ital">making, healing?</span></h2>
+      <p style="margin-top: 28px; font-size: 19px; max-width: 480px; line-height: 1.65;">We're looking for a small, lovingly-chosen circle of stallholders, demonstrators, and skill-sharers for launch day. Whether you bring jars of honey, a few yards of wool, or a quiet way of working with herbs — there's a place for you here.</p>
+
+      <div class="vendor-list">
+        <span>Smallholders</span>
+        <span>Herbalists</span>
+        <span>Beekeepers</span>
+        <span>Weavers</span>
+        <span>Mushroom growers</span>
+        <span>Woodworkers</span>
+        <span>Candle makers</span>
+        <span>Preservers</span>
+        <span>Seed savers</span>
+        <span>Bakers</span>
+        <span>Florists &amp; foragers</span>
+        <span>Soap &amp; balm makers</span>
+      </div>
+
+      <a href="#signup" class="vendor-cta">
+        <span>Tell us what you bring</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- SUN MOTIF -->
+    <div class="sun-mark">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- outer sun rays -->
+        <g stroke="#C0573B" stroke-width="1.5" stroke-linecap="round" fill="none">
+          <line x1="200" y1="20" x2="200" y2="60"/>
+          <line x1="200" y1="340" x2="200" y2="380"/>
+          <line x1="20" y1="200" x2="60" y2="200"/>
+          <line x1="340" y1="200" x2="380" y2="200"/>
+          <line x1="73" y1="73" x2="101" y2="101"/>
+          <line x1="299" y1="299" x2="327" y2="327"/>
+          <line x1="73" y1="327" x2="101" y2="299"/>
+          <line x1="299" y1="101" x2="327" y2="73"/>
+          <line x1="105" y1="50" x2="115" y2="80"/>
+          <line x1="295" y1="50" x2="285" y2="80"/>
+          <line x1="105" y1="350" x2="115" y2="320"/>
+          <line x1="295" y1="350" x2="285" y2="320"/>
+          <line x1="50" y1="105" x2="80" y2="115"/>
+          <line x1="50" y1="295" x2="80" y2="285"/>
+          <line x1="350" y1="105" x2="320" y2="115"/>
+          <line x1="350" y1="295" x2="320" y2="285"/>
+        </g>
+        <!-- center circle -->
+        <circle cx="200" cy="200" r="100" fill="#E8B8B0" opacity="0.4"/>
+        <circle cx="200" cy="200" r="100" fill="none" stroke="#3D4D34" stroke-width="2"/>
+        <circle cx="200" cy="200" r="80" fill="none" stroke="#3D4D34" stroke-width="1" opacity="0.4"/>
+        <!-- text in center -->
+        <text x="200" y="190" text-anchor="middle" font-family="Fraunces, serif" font-size="14" fill="#3D4D34" letter-spacing="3">SOLSTICE</text>
+        <text x="200" y="218" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="42" fill="#C0573B" font-weight="500">21</text>
+        <text x="200" y="240" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#3D4D34" letter-spacing="2">JUNE · MMXXVI</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-mark">iv.</div>
+    <div class="divider-line"></div>
+  </div>
+
+</div>
+
+<!-- SIGNUP -->
+<section class="signup" id="signup">
+  <div class="signup-inner">
+    <div class="signup-eyebrow">— A note from us, when there's something worth sharing</div>
+    <h2 class="signup-title">Stay close to <span class="ital">the heart of it.</span></h2>
+    <p class="signup-body">Leave your email and we'll send the venue, the running order, and one or two notes from the field. No noise, no spam — we promise.</p>
+
+    <form class="signup-form" id="signup-form">
+      <input type="email" class="signup-input" name="email" id="signup-email" placeholder="your.email@somewhere.lovely" required>
+      <button type="submit" class="signup-button">Hold a place</button>
+    </form>
+
+    <div class="signup-options" id="signup-options">
+      <label class="signup-option">
+        <input type="checkbox" name="interest" value="attending" checked> I'd love to come
+      </label>
+      <label class="signup-option">
+        <input type="checkbox" name="interest" value="stall"> I'd like to bring a stall
+      </label>
+      <label class="signup-option">
+        <input type="checkbox" name="interest" value="helping"> I want to help out
+      </label>
+    </div>
+
+    <p class="signup-confirmation" id="signup-confirmation">Thank you — we'll be in touch soon.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-mark">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 32,52 C 32,52 12,38 12,24 C 12,16 19,11 25,11 C 28,11 31,13 32,16 C 33,13 36,11 39,11 C 45,11 52,16 52,24 C 52,38 32,52 32,52 Z"
+              fill="#E8B8B0" stroke="#3D4D34" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="footer-tagline">For the people, by the people.</div>
+    <div class="footer-links">
+      <a href="https://instagram.com/manyhandsmarket" target="_blank" rel="noopener">@manyhandsmarket</a>
+      <a href="mailto:hi@manyhandsmarket.org">hi@manyhandsmarket.org</a>
+      <a href="tel:+447983819350">+44 7983 819350</a>
+    </div>
+    <div class="footer-credit">Many Hands Market · MMXXVI · Made by many hands</div>
+  </footer>
+
+</div>
+
+<script>
+  // =======================================================
+  // CONFIGURATION
+  // =======================================================
+  // Replace these with your actual URLs when ready.
+  // Until then the form falls back to "log to console" and the
+  // RSVP buttons scroll to the email form.
+  //
+  // RSVP_URL — your Humanitix or Eventbrite event link.
+  //   Example: "https://events.humanitix.com/many-hands-market-launch"
+  //
+  // SIGNUP_URL — your Google Apps Script web app URL that writes to a sheet.
+  //   See the deployment guide for setup instructions.
+  //   Example: "https://script.google.com/macros/s/AKfycb.../exec"
+
+  const RSVP_URL = "{{RSVP_URL}}";
+  const SIGNUP_URL = "{{SIGNUP_URL}}";
+
+  // =======================================================
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Helper — checks if a config placeholder has been replaced
+  const isConfigured = (value) => value && !value.includes('{{') && value.startsWith('http');
+
+  // RSVP buttons — open RSVP_URL in new tab if set, otherwise smooth-scroll to form
+  document.querySelectorAll('.rsvp-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (isConfigured(RSVP_URL)) {
+        e.preventDefault();
+        window.open(RSVP_URL, '_blank', 'noopener');
+      }
+      // otherwise let the default #signup anchor behaviour handle the scroll
+    });
+  });
+
+  // Email signup form
+  const form = document.getElementById('signup-form');
+  const confirmation = document.getElementById('signup-confirmation');
+  const optionsEl = document.getElementById('signup-options');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signup-email').value;
+    const interests = Array.from(document.querySelectorAll('input[name="interest"]:checked'))
+      .map(cb => cb.value)
+      .join(', ');
+    const timestamp = new Date().toISOString();
+
+    const payload = { email, interests, timestamp };
+
+    // Submit to Google Apps Script if configured
+    if (isConfigured(SIGNUP_URL)) {
+      try {
+        await fetch(SIGNUP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn('Submission error:', err);
+      }
+    } else {
+      console.log('Signup (no backend configured yet):', payload);
+    }
+
+    // Always show the confirmation
+    form.style.display = 'none';
+    optionsEl.style.display = 'none';
+    confirmation.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
