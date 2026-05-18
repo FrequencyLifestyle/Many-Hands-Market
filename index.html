@@ -780,26 +780,104 @@
     transform: scale(1.02);
   }
 
-  .signup-options {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 32px;
+  /* THREE PATH CARDS */
+  .path-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 8px;
   }
 
-  .signup-option {
+  .path-card {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
     gap: 10px;
-    color: var(--pink-soft);
-    font-size: 14px;
+    padding: 32px 28px;
+    background: rgba(251, 246, 235, 0.06);
+    border: 1px solid rgba(251, 246, 235, 0.22);
+    border-radius: 18px;
     cursor: pointer;
-    font-style: italic;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Newsreader', serif;
   }
 
-  .signup-option input {
-    accent-color: var(--pink);
+  .path-card:hover {
+    background: rgba(251, 246, 235, 0.12);
+    border-color: var(--pink);
+    transform: translateY(-3px);
+  }
+
+  .path-card-label {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    font-variation-settings: 'opsz' 32, 'SOFT' 80;
+    color: var(--paper);
+    line-height: 1.15;
+  }
+
+  .path-card-sub {
+    font-size: 15px;
+    line-height: 1.45;
+    color: rgba(251, 246, 235, 0.6);
+    flex: 1;
+  }
+
+  .path-card-arrow {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-top: 8px;
+    transition: gap 0.3s ease;
+  }
+
+  .path-card:hover .path-card-arrow {
+    color: var(--pink-soft);
+  }
+
+  /* REVEALED EMAIL FORM */
+  .signup-reveal {
+    display: none;
+    margin-top: 8px;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .signup-reveal.show {
+    display: block;
+  }
+
+  .path-cards.hide {
+    display: none;
+  }
+
+  .signup-reveal-intro {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--pink-soft);
+    margin-bottom: 28px;
+    line-height: 1.4;
+  }
+
+  .signup-back {
+    background: none;
+    border: 0;
+    color: rgba(251, 246, 235, 0.55);
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+  }
+
+  .signup-back:hover {
+    color: var(--pink);
   }
 
   .signup-confirmation {
@@ -904,6 +982,8 @@
     .offerings { padding: 60px 24px; margin: 0 -24px; }
     .offerings-grid { grid-template-columns: 1fr; }
     .signup { padding: 80px 24px; }
+    .path-cards { grid-template-columns: 1fr; gap: 12px; }
+    .path-card { padding: 24px 22px; }
     .signup-form { flex-direction: column; border-radius: 24px; padding: 16px; gap: 12px; }
     .signup-input { text-align: center; padding: 12px; }
     .signup-button { width: 100%; padding: 16px; }
@@ -1188,25 +1268,37 @@
 <!-- SIGNUP -->
 <section class="signup" id="signup">
   <div class="signup-inner">
-    <div class="signup-eyebrow">— A note from us, when there's something worth sharing</div>
-    <h2 class="signup-title">Stay close to <span class="ital">the heart of it.</span></h2>
-    <p class="signup-body">Leave your email and we'll send the venue, the running order, and one or two notes from the field. No noise, no spam — we promise.</p>
+    <div class="signup-eyebrow">— Three ways to be part of it</div>
+    <h2 class="signup-title">Come, make, or <span class="ital">lend a hand.</span></h2>
+    <p class="signup-body">However you'd like to join us, there's a place for you. Choose the one that fits.</p>
 
-    <form class="signup-form" id="signup-form">
-      <input type="email" class="signup-input" name="email" id="signup-email" placeholder="your.email@somewhere.lovely" required>
-      <button type="submit" class="signup-button">Hold a place</button>
-    </form>
+    <!-- THE THREE PATHS -->
+    <div class="path-cards" id="path-cards">
+      <button class="path-card" id="path-attend" type="button">
+        <span class="path-card-label">I'd love to come</span>
+        <span class="path-card-sub">Reserve your free place on the day</span>
+        <span class="path-card-arrow">Reserve on Eventbrite →</span>
+      </button>
+      <button class="path-card" id="path-stall" type="button">
+        <span class="path-card-label">I'd like to bring a stall</span>
+        <span class="path-card-sub">Growers, makers &amp; healers — join the circle</span>
+        <span class="path-card-arrow">Tell us about you →</span>
+      </button>
+      <button class="path-card" id="path-help" type="button">
+        <span class="path-card-label">I want to help out</span>
+        <span class="path-card-sub">Lend a hand to make the day happen</span>
+        <span class="path-card-arrow">Count me in →</span>
+      </button>
+    </div>
 
-    <div class="signup-options" id="signup-options">
-      <label class="signup-option">
-        <input type="checkbox" name="interest" value="attending" checked> I'd love to come
-      </label>
-      <label class="signup-option">
-        <input type="checkbox" name="interest" value="stall"> I'd like to bring a stall
-      </label>
-      <label class="signup-option">
-        <input type="checkbox" name="interest" value="helping"> I want to help out
-      </label>
+    <!-- EMAIL FORM (revealed for stall / help) -->
+    <div class="signup-reveal" id="signup-reveal">
+      <p class="signup-reveal-intro" id="signup-reveal-intro"></p>
+      <form class="signup-form" id="signup-form">
+        <input type="email" class="signup-input" name="email" id="signup-email" placeholder="your.email@somewhere.lovely" required>
+        <button type="submit" class="signup-button">Send it</button>
+      </form>
+      <button class="signup-back" id="signup-back" type="button">← back to the three ways</button>
     </div>
 
     <p class="signup-confirmation" id="signup-confirmation">Thank you — we'll be in touch soon.</p>
@@ -1249,7 +1341,7 @@
   //   See the deployment guide for setup instructions.
   //   Example: "https://script.google.com/macros/s/AKfycb.../exec"
 
-  const RSVP_URL = "{{RSVP_URL}}";
+  const RSVP_URL = "https://www.eventbrite.co.uk/e/many-hands-market-summer-solstice-launch-tickets-1989392063214";
   const SIGNUP_URL = "{{SIGNUP_URL}}";
 
   // =======================================================
@@ -1269,33 +1361,69 @@
   // Helper — checks if a config placeholder has been replaced
   const isConfigured = (value) => value && !value.includes('{{') && value.startsWith('http');
 
-  // RSVP buttons — open RSVP_URL in new tab if set, otherwise smooth-scroll to form
+  // Hero RSVP buttons — open Eventbrite in new tab if set, else scroll to signup
   document.querySelectorAll('.rsvp-link').forEach(link => {
     link.addEventListener('click', (e) => {
       if (isConfigured(RSVP_URL)) {
         e.preventDefault();
         window.open(RSVP_URL, '_blank', 'noopener');
       }
-      // otherwise let the default #signup anchor behaviour handle the scroll
     });
   });
 
-  // Email signup form
+  // === THREE PATHS ===
+  const pathCards = document.getElementById('path-cards');
+  const reveal = document.getElementById('signup-reveal');
+  const revealIntro = document.getElementById('signup-reveal-intro');
+  const backBtn = document.getElementById('signup-back');
   const form = document.getElementById('signup-form');
   const confirmation = document.getElementById('signup-confirmation');
-  const optionsEl = document.getElementById('signup-options');
 
+  // Tracks which path the visitor chose, recorded into the sheet
+  let chosenInterest = '';
+
+  // Path 1 — Attend → Eventbrite
+  document.getElementById('path-attend').addEventListener('click', () => {
+    if (isConfigured(RSVP_URL)) {
+      window.open(RSVP_URL, '_blank', 'noopener');
+    } else {
+      // Fallback if URL ever missing — reveal the email form tagged as attending
+      openForm('attending', "Leave your email and we'll send you the details and the running order.");
+    }
+  });
+
+  // Path 2 — Bring a stall → email form
+  document.getElementById('path-stall').addEventListener('click', () => {
+    openForm('stall', "Wonderful. Leave your email and Karina will be in touch about bringing a stall — what you make, grow, or heal with.");
+  });
+
+  // Path 3 — Help out → email form
+  document.getElementById('path-help').addEventListener('click', () => {
+    openForm('helping', "Thank you. Leave your email and we'll be in touch about lending a hand on the day.");
+  });
+
+  function openForm(interest, introText) {
+    chosenInterest = interest;
+    revealIntro.textContent = introText;
+    pathCards.classList.add('hide');
+    reveal.classList.add('show');
+    document.getElementById('signup-email').focus();
+  }
+
+  backBtn.addEventListener('click', () => {
+    reveal.classList.remove('show');
+    pathCards.classList.remove('hide');
+    chosenInterest = '';
+  });
+
+  // Email form submission (stall / help paths)
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('signup-email').value;
-    const interests = Array.from(document.querySelectorAll('input[name="interest"]:checked'))
-      .map(cb => cb.value)
-      .join(', ');
+    const interests = chosenInterest;
     const timestamp = new Date().toISOString();
-
     const payload = { email, interests, timestamp };
 
-    // Submit to Google Apps Script if configured
     if (isConfigured(SIGNUP_URL)) {
       try {
         await fetch(SIGNUP_URL, {
@@ -1311,9 +1439,8 @@
       console.log('Signup (no backend configured yet):', payload);
     }
 
-    // Always show the confirmation
-    form.style.display = 'none';
-    optionsEl.style.display = 'none';
+    reveal.classList.remove('show');
+    pathCards.classList.add('hide');
     confirmation.classList.add('show');
   });
 </script>
