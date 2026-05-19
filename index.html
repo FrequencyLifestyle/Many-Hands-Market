@@ -737,36 +737,46 @@
 
   .signup-form {
     display: flex;
-    gap: 0;
+    flex-direction: column;
+    gap: 14px;
     max-width: 560px;
-    margin: 0 auto 32px;
-    background: var(--paper);
-    border-radius: 100px;
-    padding: 6px;
-    align-items: center;
+    margin: 0 auto 28px;
   }
 
-  .signup-input {
-    flex: 1;
-    background: transparent;
+  .signup-field {
+    width: 100%;
+    background: var(--paper);
     border: 0;
-    padding: 16px 24px;
+    border-radius: 18px;
+    padding: 18px 24px;
     font-family: 'Newsreader', serif;
     font-size: 17px;
     color: var(--text);
     outline: none;
+    transition: box-shadow 0.3s ease;
   }
 
-  .signup-input::placeholder {
+  .signup-field:focus {
+    box-shadow: 0 0 0 2px var(--pink);
+  }
+
+  .signup-field::placeholder {
     color: var(--text-soft);
     font-style: italic;
+  }
+
+  .signup-textarea {
+    resize: vertical;
+    min-height: 84px;
+    line-height: 1.5;
+    font-family: 'Newsreader', serif;
   }
 
   .signup-button {
     background: var(--terracotta);
     color: var(--paper);
     border: 0;
-    padding: 16px 28px;
+    padding: 18px 28px;
     border-radius: 100px;
     font-family: 'Fraunces', serif;
     font-size: 14px;
@@ -775,6 +785,7 @@
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 4px;
   }
 
   .signup-button:hover {
@@ -986,8 +997,9 @@
     .signup { padding: 80px 24px; }
     .path-cards { grid-template-columns: 1fr; gap: 12px; }
     .path-card { padding: 24px 22px; }
-    .signup-form { flex-direction: column; border-radius: 24px; padding: 16px; gap: 12px; }
-    .signup-input { text-align: center; padding: 12px; }
+    .signup-form { gap: 12px; }
+    .signup-field { text-align: center; padding: 16px; }
+    .signup-textarea { text-align: left; }
     .signup-button { width: 100%; padding: 16px; }
     .vendor-list { columns: 1; }
     .hero-meta { gap: 24px; }
@@ -1297,7 +1309,9 @@
     <div class="signup-reveal" id="signup-reveal">
       <p class="signup-reveal-intro" id="signup-reveal-intro"></p>
       <form class="signup-form" id="signup-form">
-        <input type="email" class="signup-input" name="email" id="signup-email" placeholder="your.email@somewhere.lovely" required>
+        <input type="text" class="signup-field" name="name" id="signup-name" placeholder="Your name" required>
+        <input type="email" class="signup-field" name="email" id="signup-email" placeholder="your.email@somewhere.lovely" required>
+        <textarea class="signup-field signup-textarea" name="message" id="signup-message" placeholder="Tell us a little about what you'd bring or how you'd like to help (optional)" rows="3"></textarea>
         <button type="submit" class="signup-button">Send it</button>
       </form>
       <button class="signup-back" id="signup-back" type="button">← back to the three ways</button>
@@ -1409,7 +1423,7 @@
     revealIntro.textContent = introText;
     pathCards.classList.add('hide');
     reveal.classList.add('show');
-    document.getElementById('signup-email').focus();
+    document.getElementById('signup-name').focus();
   }
 
   backBtn.addEventListener('click', () => {
@@ -1421,10 +1435,12 @@
   // Email form submission (stall / help paths)
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const name = document.getElementById('signup-name').value;
     const email = document.getElementById('signup-email').value;
+    const message = document.getElementById('signup-message').value;
     const interests = chosenInterest;
     const timestamp = new Date().toISOString();
-    const payload = { email, interests, timestamp };
+    const payload = { name, email, message, interests, timestamp };
 
     if (isConfigured(SIGNUP_URL)) {
       try {
