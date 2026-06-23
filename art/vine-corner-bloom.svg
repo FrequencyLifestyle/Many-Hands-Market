@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Block-print corner ornament: a curl of Morris vine resolving into a terracotta seedhead with pink petals and soft-green leaves">
+  <defs>
+    <filter id="cb-grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0" result="g"/>
+      <feComposite in="g" in2="SourceGraphic" operator="in" result="gm"/>
+      <feBlend in="SourceGraphic" in2="gm" mode="multiply"/>
+    </filter>
+  </defs>
+
+  <!--
+    PLACEMENT: anchored to the TOP-LEFT corner. Mount the four corners with:
+      top-left      : (no transform)
+      top-right     : transform="translate(120,0)   scale(-1,1)"   OR rotate(90 60 60)
+      bottom-right  : transform="rotate(180 60 60)"
+      bottom-left   : transform="translate(0,120) scale(1,-1)"     OR rotate(270 60 60)
+    Pure 90deg rotation about (60,60) also tiles all four corners.
+
+    COLOURWAY: this default is CREAM-ON-GREEN (for the dark photo mount).
+    For GREEN-ON-PARCHMENT light grounds, swap:
+      stroke #FBF6EB -> #3D4D34   (the carved vine/leaf outlines)
+      stroke #F2D4CE -> #6B7A5C   (inner stitch lines), keep terracotta + pink fills as-is.
+  -->
+
+  <g filter="url(#cb-grain)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- ====== CARVED MORRIS VINE: ogee curl sweeping out of the corner ====== -->
+    <!-- main stem, bold woodcut weight, gentle wobble -->
+    <path d="M5 5
+             C 5 22, 16 31, 30 33
+             C 47 35.5, 57 27, 60.5 13
+             C 62.4 5.4, 61.2 3.2, 60 1.5"
+          stroke="#FBF6EB" stroke-width="6.4"/>
+    <!-- the ogee return: stem curling back down toward the adjacent edge -->
+    <path d="M5 5
+             C 22 5, 31 16, 33 30
+             C 35.5 47, 27 57, 13 60.5
+             C 5.4 62.4, 3.2 61.2, 1.5 60"
+          stroke="#FBF6EB" stroke-width="6.4"/>
+
+    <!-- inner shadow-line that gives the printed block its carved double-edge -->
+    <path d="M9 9 C 9 21, 17 28, 29 30 C 44 32, 53 25, 56.5 13"
+          stroke="#F2D4CE" stroke-width="1.4" opacity="0.85"/>
+    <path d="M9 9 C 21 9, 28 17, 30 29 C 32 44, 25 53, 13 56.5"
+          stroke="#F2D4CE" stroke-width="1.4" opacity="0.85"/>
+
+    <!-- ====== TENDRIL that spirals off the curl ====== -->
+    <path d="M30 33 C 25 41, 28 48, 36 49 C 42 49.7, 44 45, 41 42 C 39 40, 36 41, 37 44"
+          stroke="#FBF6EB" stroke-width="3"/>
+    <path d="M33 30 C 41 25, 48 28, 49 36 C 49.7 42, 45 44, 42 41 C 40 39, 41 36, 44 37"
+          stroke="#FBF6EB" stroke-width="3"/>
+
+    <!-- ====== SOFT-GREEN LEAVES (block-printed, irregular) ====== -->
+    <!-- upper leaf -->
+    <path d="M52 18 C 60 14, 70 16, 74 9 C 70 21, 61 26, 52 24 Z"
+          fill="#6B7A5C" stroke="#FBF6EB" stroke-width="2"/>
+    <path d="M55 21 C 62 19, 67 17, 71 12" stroke="#FBF6EB" stroke-width="1.2" opacity="0.8"/>
+    <!-- lower leaf (mirror, slightly different so it isn't a perfect twin) -->
+    <path d="M18 52 C 14 60, 16 70, 9 74 C 21.5 70.5, 26 60.5, 24 52 Z"
+          fill="#6B7A5C" stroke="#FBF6EB" stroke-width="2"/>
+    <path d="M21 55 C 19 62, 17 67, 12 71" stroke="#FBF6EB" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- a small wheat-ear leaflet near the vine root, for harvest read -->
+    <path d="M14 14 C 22 18, 24 24, 22 30 C 17 26, 13 21, 14 14 Z"
+          fill="#6B7A5C" stroke="#FBF6EB" stroke-width="1.8"/>
+
+    <!-- ====== THE BLOOM: terracotta seedhead with pink-soft petals ====== -->
+    <g transform="translate(60,60)">
+      <!-- pink-soft petals fanning out behind the seedhead -->
+      <g fill="#F2D4CE" stroke="#FBF6EB" stroke-width="1.6">
+        <path d="M0 -2 C 9 -16, 26 -18, 30 -30 C 22 -22, 9 -22, 2 -12 Z"/>
+        <path d="M-2 0 C -16 9, -18 26, -30 30 C -22 22, -22 9, -12 2 Z"/>
+        <path d="M1.5 -1.5 C 14 -10, 30 -8, 38 -16 C 28 -10, 13 -13, 5.5 -6.5 Z"/>
+        <path d="M-1.5 1.5 C -10 14, -8 30, -16 38 C -10 28, -13 13, -6.5 5.5 Z"/>
+      </g>
+      <!-- a few pink accent petals (the brand pink, slightly deeper) -->
+      <g fill="#E8B8B0" stroke="#FBF6EB" stroke-width="1.4">
+        <path d="M2 -3 C 13 -11, 23 -16, 24 -25 C 18 -18, 9 -16, 4 -9 Z"/>
+        <path d="M-3 2 C -11 13, -16 23, -25 24 C -18 18, -16 9, -9 4 Z"/>
+      </g>
+
+      <!-- terracotta seedhead, carved petal-ring -->
+      <path d="M0 -16
+               C 6 -16, 9 -12, 9 -7
+               C 14 -9, 18 -5, 16 1
+               C 18 6, 14 11, 8 9
+               C 8 14, 3 17, -2 15
+               C -7 18, -12 14, -11 8
+               C -16 7, -17 1, -13 -3
+               C -16 -9, -11 -15, -5 -13
+               C -4 -16, -2 -16, 0 -16 Z"
+            fill="#C0573B" stroke="#FBF6EB" stroke-width="2.4"/>
+
+      <!-- carved seed stipple inside the head (the woodcut dots) -->
+      <g fill="#FBF6EB">
+        <circle cx="0" cy="-5" r="1.5"/>
+        <circle cx="5" cy="-1" r="1.5"/>
+        <circle cx="2.5" cy="4" r="1.5"/>
+        <circle cx="-3.5" cy="2.5" r="1.5"/>
+        <circle cx="-4" cy="-3" r="1.5"/>
+        <circle cx="0.5" cy="0" r="1.7"/>
+      </g>
+      <!-- pink-soft centre dot, the heart-pink wink -->
+      <circle cx="0.5" cy="0" r="0.9" fill="#E8B8B0"/>
+    </g>
+
+    <!-- ====== two carved buds on short stems, balancing the bloom ====== -->
+    <g>
+      <path d="M60.5 13 C 64 8, 70 7, 73 3" stroke="#FBF6EB" stroke-width="2.6"/>
+      <path d="M73 3 C 78 1, 81 5, 79 9 C 77 12, 72 11, 73 6 Z"
+            fill="#C0573B" stroke="#FBF6EB" stroke-width="1.6"/>
+      <path d="M13 60.5 C 8 64, 7 70, 3 73" stroke="#FBF6EB" stroke-width="2.6"/>
+      <path d="M3 73 C 1 78, 5 81, 9 79 C 12 77, 11 72, 6 73 Z"
+            fill="#C0573B" stroke="#FBF6EB" stroke-width="1.6"/>
+    </g>
+
+  </g>
+</svg>

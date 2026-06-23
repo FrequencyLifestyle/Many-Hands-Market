@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Many Hands Market block-print pattern: an ogee botanical lattice of wheat ears and seedheads in deep green, terracotta and pink">
+  <defs>
+    <filter id="moGrain" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" values="0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.10  0 0 0 0.5 0"/>
+    </filter>
+
+    <pattern id="morris-ogee" patternUnits="userSpaceOnUse" width="120" height="120">
+
+      <!-- OGEE LATTICE: opposed S-curves meet at edge midpoints (60,0)(60,120)(0,60)(120,60) so the vine
+           is continuous across every tile boundary. Hand-wobbled control points, round caps/joins. -->
+      <g fill="none" stroke="#6B7A5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60,0 C44,14 31,26 30,42 C29,54 20,58 0,60" opacity="0.95"/>
+        <path d="M0,60 C20,62 29,66 30,78 C31,94 44,106 60,120" opacity="0.95"/>
+        <path d="M60,0 C76,14 89,26 90,42 C91,54 100,58 120,60" opacity="0.95"/>
+        <path d="M120,60 C100,62 91,66 90,78 C89,94 76,106 60,120" opacity="0.95"/>
+      </g>
+      <!-- thinner echo for printed-cloth density -->
+      <g fill="none" stroke="#6B7A5C" stroke-width="1.1" stroke-linecap="round" opacity="0.55">
+        <path d="M60,3 C46,16 34,27 33,42 C32,53 24,57 4,60"/>
+        <path d="M4,60 C24,63 32,67 33,78 C34,93 46,104 60,117"/>
+        <path d="M60,3 C74,16 86,27 87,42 C88,53 96,57 116,60"/>
+        <path d="M116,60 C96,63 88,67 87,78 C86,93 74,104 60,117"/>
+      </g>
+
+      <!-- CORNER BLOOMS (pink): a quarter at each corner so the whole four-petal bloom forms across the join -->
+      <g>
+        <g fill="#E8B8B0" stroke="#3D4D34" stroke-width="1" stroke-linejoin="round">
+          <path d="M0,0 C7,1 12,5 13,12 C8,12 3,9 0,7 Z"/>
+          <path d="M0,0 C1,7 5,12 12,13 C12,8 9,3 7,0 Z"/>
+          <path d="M120,0 C113,1 108,5 107,12 C112,12 117,9 120,7 Z"/>
+          <path d="M120,0 C119,7 115,12 108,13 C108,8 111,3 113,0 Z"/>
+          <path d="M0,120 C7,119 12,115 13,108 C8,108 3,111 0,113 Z"/>
+          <path d="M0,120 C1,113 5,108 12,107 C12,112 9,117 7,120 Z"/>
+          <path d="M120,120 C113,119 108,115 107,108 C112,108 117,111 120,113 Z"/>
+          <path d="M120,120 C119,113 115,108 108,107 C108,112 111,117 113,120 Z"/>
+        </g>
+        <g fill="#C0573B">
+          <circle cx="0" cy="0" r="3.4"/><circle cx="120" cy="0" r="3.4"/>
+          <circle cx="0" cy="120" r="3.4"/><circle cx="120" cy="120" r="3.4"/>
+        </g>
+        <g fill="#F2D4CE">
+          <circle cx="0" cy="0" r="1.4"/><circle cx="120" cy="0" r="1.4"/>
+          <circle cx="0" cy="120" r="1.4"/><circle cx="120" cy="120" r="1.4"/>
+        </g>
+      </g>
+
+      <!-- CENTRAL SEEDHEAD: terracotta core, carved cross-hatch, pink-soft 8-petal rosette -->
+      <g transform="translate(60,60)">
+        <g fill="#F2D4CE" stroke="#3D4D34" stroke-width="0.9" stroke-linejoin="round">
+          <path d="M0,-15 C4,-11 4,-5 0,-2 C-4,-5 -4,-11 0,-15 Z"/>
+          <path d="M0,15 C4,11 4,5 0,2 C-4,5 -4,11 0,15 Z"/>
+          <path d="M-15,0 C-11,-4 -5,-4 -2,0 C-5,4 -11,4 -15,0 Z"/>
+          <path d="M15,0 C11,-4 5,-4 2,0 C5,4 11,4 15,0 Z"/>
+          <g transform="rotate(45)" opacity="0.92">
+            <path d="M0,-13 C3,-9 3,-4 0,-1.6 C-3,-4 -3,-9 0,-13 Z"/>
+            <path d="M0,13 C3,9 3,4 0,1.6 C-3,4 -3,9 0,13 Z"/>
+            <path d="M-13,0 C-9,-3 -4,-3 -1.6,0 C-4,3 -9,3 -13,0 Z"/>
+            <path d="M13,0 C9,-3 4,-3 1.6,0 C4,3 9,3 13,0 Z"/>
+          </g>
+        </g>
+        <circle r="7.5" fill="#C0573B"/>
+        <g stroke="#3D4D34" stroke-width="0.7" stroke-linecap="round" opacity="0.6">
+          <line x1="-5" y1="-2.5" x2="5" y2="-2.5"/>
+          <line x1="-5.5" y1="0" x2="5.5" y2="0"/>
+          <line x1="-5" y1="2.5" x2="5" y2="2.5"/>
+          <line x1="-2.5" y1="-5" x2="-2.5" y2="5"/>
+          <line x1="0" y1="-5.5" x2="0" y2="5.5"/>
+          <line x1="2.5" y1="-5" x2="2.5" y2="5"/>
+        </g>
+        <circle r="2.2" fill="#F2D4CE"/>
+      </g>
+
+      <!-- vertical spine threads linking top/bottom edge joins through the centre -->
+      <g fill="none" stroke="#6B7A5C" stroke-width="1.3" stroke-linecap="round" opacity="0.7">
+        <path d="M60,0 C60.6,6 59.5,12 60,18"/>
+        <path d="M60,102 C60.6,108 59.5,114 60,120"/>
+      </g>
+
+      <!-- WHEAT EARS on the spine (top hanging, bottom mirrored), carved terracotta-soft grains -->
+      <g stroke="#6B7A5C" stroke-width="1.6" stroke-linecap="round" fill="#6B7A5C">
+        <g transform="translate(60,18)">
+          <path d="M0,-12 C0,-5 0,3 0,12" fill="none" stroke-width="1.4"/>
+          <g fill="#D9826A" stroke="#C0573B" stroke-width="0.7">
+            <ellipse cx="-2.4" cy="-7" rx="2.1" ry="3.4" transform="rotate(-28 -2.4 -7)"/>
+            <ellipse cx="2.4" cy="-7" rx="2.1" ry="3.4" transform="rotate(28 2.4 -7)"/>
+            <ellipse cx="-2.6" cy="-1.5" rx="2.2" ry="3.6" transform="rotate(-26 -2.6 -1.5)"/>
+            <ellipse cx="2.6" cy="-1.5" rx="2.2" ry="3.6" transform="rotate(26 2.6 -1.5)"/>
+            <ellipse cx="-2.4" cy="4" rx="2.1" ry="3.4" transform="rotate(-24 -2.4 4)"/>
+            <ellipse cx="2.4" cy="4" rx="2.1" ry="3.4" transform="rotate(24 2.4 4)"/>
+            <ellipse cx="0" cy="9.5" rx="2" ry="3.2"/>
+          </g>
+        </g>
+        <g transform="translate(60,102) scale(1,-1)">
+          <path d="M0,-12 C0,-5 0,3 0,12" fill="none" stroke-width="1.4"/>
+          <g fill="#D9826A" stroke="#C0573B" stroke-width="0.7">
+            <ellipse cx="-2.4" cy="-7" rx="2.1" ry="3.4" transform="rotate(-28 -2.4 -7)"/>
+            <ellipse cx="2.4" cy="-7" rx="2.1" ry="3.4" transform="rotate(28 2.4 -7)"/>
+            <ellipse cx="-2.6" cy="-1.5" rx="2.2" ry="3.6" transform="rotate(-26 -2.6 -1.5)"/>
+            <ellipse cx="2.6" cy="-1.5" rx="2.2" ry="3.6" transform="rotate(26 2.6 -1.5)"/>
+            <ellipse cx="-2.4" cy="4" rx="2.1" ry="3.4" transform="rotate(-24 -2.4 4)"/>
+            <ellipse cx="2.4" cy="4" rx="2.1" ry="3.4" transform="rotate(24 2.4 4)"/>
+            <ellipse cx="0" cy="9.5" rx="2" ry="3.2"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- INTERSTITIAL LEAVES + BUDS in the side lobes -->
+      <g stroke="#3D4D34" stroke-width="0.8" stroke-linejoin="round">
+        <g transform="translate(17,60)">
+          <path d="M0,0 C-7,-5 -12,-3 -15,2 C-10,4 -4,4 0,0 Z" fill="#6B7A5C"/>
+          <path d="M-13,1.5 C-9,1 -5,0.6 -1,0" fill="none" stroke="#3D4D34" stroke-width="0.6" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="3" cy="-7" r="2.6" fill="#D9826A"/>
+          <path d="M3,-4.4 C3,-2 3,0 3,2" fill="none" stroke="#6B7A5C" stroke-width="1.1" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(103,60) scale(-1,1)">
+          <path d="M0,0 C-7,-5 -12,-3 -15,2 C-10,4 -4,4 0,0 Z" fill="#6B7A5C"/>
+          <path d="M-13,1.5 C-9,1 -5,0.6 -1,0" fill="none" stroke="#3D4D34" stroke-width="0.6" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="3" cy="-7" r="2.6" fill="#D9826A"/>
+          <path d="M3,-4.4 C3,-2 3,0 3,2" fill="none" stroke="#6B7A5C" stroke-width="1.1" stroke-linecap="round"/>
+        </g>
+        <g fill="#6B7A5C">
+          <path d="M38,34 C34,30 35,25 39,23 C42,27 42,32 38,34 Z"/>
+          <path d="M82,34 C86,30 85,25 81,23 C78,27 78,32 82,34 Z"/>
+          <path d="M38,86 C34,90 35,95 39,97 C42,93 42,88 38,86 Z"/>
+          <path d="M82,86 C86,90 85,95 81,97 C78,93 78,88 82,86 Z"/>
+        </g>
+      </g>
+
+      <!-- grain so the inks read as pressed on paper -->
+      <rect width="120" height="120" filter="url(#moGrain)" style="mix-blend-mode:multiply" opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="120" height="120" fill="url(#morris-ogee)"/>
+</svg>

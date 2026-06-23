@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--green:#3D4D34;--paper:#FBF6EB;--pink:#E8B8B0;--pink-soft:#F2D4CE;--terra:#C0573B;--terra-soft:#D9826A}
+  #og{width:1200px;height:630px;position:relative;overflow:hidden;background:var(--green);
+    display:flex;align-items:center;padding:64px 72px;font-family:'Newsreader',serif}
+  #og::before{content:'';position:absolute;inset:0;background:url('art/morris-whisper.svg');background-size:150px;opacity:.42;z-index:0}
+  #og::after{content:'';position:absolute;inset:0;z-index:1;opacity:.5;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.10 0 0 0 0.08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+  .col{position:relative;z-index:2}
+  .left{flex:1}
+  .edition{font-family:'Fraunces',serif;font-size:18px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--pink);display:flex;align-items:center;gap:16px;margin-bottom:22px}
+  .edition::after{content:'';width:90px;height:1px;background:var(--terra-soft);opacity:.6}
+  h1{font-family:'Fraunces',serif;font-weight:400;font-variation-settings:'opsz' 144,'SOFT' 60;font-size:96px;line-height:.92;letter-spacing:-.03em;color:var(--paper);margin-bottom:26px}
+  h1 .ital{font-style:italic;color:var(--terra-soft)}
+  .stamp{display:flex;align-items:center;gap:14px;font-family:'Fraunces',serif;font-size:19px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);padding:18px 0;border-top:1px solid rgba(232,184,176,.4);border-bottom:1px solid rgba(232,184,176,.4);width:fit-content}
+  .stamp .dot{color:var(--terra-soft)}
+  .stamp .hot{color:var(--pink)}
+  .right{width:330px;display:flex;align-items:center;justify-content:center}
+  .right img{width:330px;height:330px;filter:drop-shadow(0 14px 30px rgba(0,0,0,.3))}
+</style></head>
+<body>
+<div id="og">
+  <div class="col left">
+    <div class="edition">No. 02 · The August Gathering</div>
+    <h1>From field to <span class="ital">hearth</span>,<br>once again.</h1>
+    <div class="stamp"><span>Sun</span><span class="dot">·</span><span class="hot">2 August 2026</span><span class="dot">·</span><span>1–5pm</span><span class="dot">·</span><span>The Beverley Barn</span></div>
+  </div>
+  <div class="col right"><img src="art/wheat-sheaf-hero-roundel.svg" alt=""></div>
+</div>
+</body></html>

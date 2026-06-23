@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 24" width="96" height="24" role="img" aria-label="Folk cross-stitch border: alternating terracotta and sage floss X-stitches on a faint linen thread-grid.">
+  <title>Folk cross-stitch border strip</title>
+  <defs>
+    <!-- Grain: ink-pressed-on-paper, opacity 0.5 multiply over the strip -->
+    <filter id="csb-grain" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.10  0 0 0 0.08 0"/>
+    </filter>
+
+    <!-- The tile: 96 x 24, userSpaceOnUse so seams line up across any width. -->
+    <pattern id="cross-stitch-border" patternUnits="userSpaceOnUse" width="96" height="24">
+      <!-- Faint linen thread-grid woven behind the floss -->
+      <g stroke="#C9B89F" stroke-width="0.6" stroke-linecap="round" opacity="0.42">
+        <!-- warp (vertical threads) -->
+        <path d="M12 3.4 12.4 20.6"/>
+        <path d="M24.3 3 23.9 21"/>
+        <path d="M36 3.5 36.3 20.7"/>
+        <path d="M48.2 3 48 21"/>
+        <path d="M60 3.3 60.4 20.8"/>
+        <path d="M72.3 3 71.9 21"/>
+        <path d="M84 3.6 84.2 20.6"/>
+        <!-- weft (horizontal threads) -->
+        <path d="M3 8.2 93 7.7"/>
+        <path d="M3 16 93.4 16.4"/>
+      </g>
+
+      <!-- Cross-stitches. 3px floss, round caps, each X hand-set with a little wobble.
+           Alternating terracotta / sage, slightly varied so it reads counted-by-hand. -->
+      <g stroke-width="3" stroke-linecap="round" fill="none">
+        <!-- 1 · terracotta -->
+        <g stroke="#C0573B">
+          <path d="M6.3 7.2 17.4 16.9"/>
+          <path d="M17.1 7.4 6.6 17.1"/>
+        </g>
+        <!-- 2 · sage (green-soft) -->
+        <g stroke="#6B7A5C">
+          <path d="M30.6 7.5 41.2 16.6"/>
+          <path d="M41.4 7.1 30.3 17.2"/>
+        </g>
+        <!-- 3 · terracotta -->
+        <g stroke="#C0573B">
+          <path d="M54.4 7.1 65.6 17.2"/>
+          <path d="M65.3 7.5 54.6 16.8"/>
+        </g>
+        <!-- 4 · sage (green-soft) -->
+        <g stroke="#6B7A5C">
+          <path d="M78.6 7.4 89.3 16.7"/>
+          <path d="M89.1 7.1 78.4 17.3"/>
+        </g>
+      </g>
+
+      <!-- Tiny half-stitch tacks between the big Xes — the counted-thread rhythm -->
+      <g stroke-width="1.6" stroke-linecap="round" opacity="0.7">
+        <path d="M23.6 11 26.8 13.2" stroke="#6B7A5C"/>
+        <path d="M47.6 13.2 50.8 11" stroke="#C0573B"/>
+        <path d="M71.6 11 74.8 13.2" stroke="#6B7A5C"/>
+      </g>
+
+      <!-- Grain pressed over the whole tile -->
+      <rect width="96" height="24" filter="url(#csb-grain)" opacity="0.5" style="mix-blend-mode:multiply"/>
+    </pattern>
+  </defs>
+
+  <!-- Self-contained preview: paints the tile across the viewBox -->
+  <rect width="96" height="24" fill="url(#cross-stitch-border)"/>
+</svg>

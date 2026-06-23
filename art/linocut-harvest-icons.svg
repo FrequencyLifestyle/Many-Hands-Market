@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200" role="img" aria-labelledby="lhi-title lhi-desc" font-family="'Newsreader', Georgia, serif">
+  <title id="lhi-title">Many Hands Market — Linocut Harvest Icon Set</title>
+  <desc id="lhi-desc">Six hand-carved woodcut icons on a shared 64-baseline: a loaf for bakers, a preserve jar, a basket of produce for growers, a herb seedhead for healers, two clasped working hands for makers, and a music note for the live set. Bold charcoal outlines, brand-colour fills with cream gouge-marks; icons deepen to terracotta on hover.</desc>
+
+  <!-- ============ DEFS ============ -->
+  <defs>
+    <!-- Pressed-ink grain: green reads as ink on paper -->
+    <filter id="lhiGrain" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0" result="g"/>
+      <feComposite in="g" in2="SourceGraphic" operator="in" result="grain"/>
+      <feBlend in="SourceGraphic" in2="grain" mode="multiply"/>
+    </filter>
+
+    <!-- Carved-edge wobble so strokes never read as slick vectors -->
+    <filter id="lhiCarve" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028 0.034" numOctaves="2" seed="11" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <style>
+      .ico { cursor: default; }
+      .swatch { fill: #F4ECDF; stroke: #C9B89F; stroke-width: 1; }
+      /* hover: the carved fill deepens to terracotta ink */
+      .ico:hover .accent { fill: #C0573B; }
+      .ico:hover .accent-soft { fill: #D9826A; }
+      .ico:hover .swatch { fill: #FBF6EB; stroke: #C0573B; }
+      @media (prefers-reduced-motion: no-preference) {
+        .accent, .accent-soft, .swatch { transition: fill .35s ease, stroke .35s ease; }
+      }
+    </style>
+  </defs>
+
+  <!-- ============ SHEET ============ -->
+  <rect width="400" height="200" fill="#FBF6EB"/>
+  <!-- faint linen registration marks at the corners, carved feel -->
+  <g stroke="#C9B89F" stroke-width="1.4" stroke-linecap="round" opacity="0.55">
+    <path d="M14 14h12 M14 14v12 M386 14h-12 M386 14v12 M14 186h12 M14 186v-12 M386 186h-12 M386 186v-12"/>
+  </g>
+
+  <g filter="url(#lhiGrain)">
+
+    <!-- ===================================================== -->
+    <!-- 1 · LOAF / BREAD — bakers (terracotta crust)          -->
+    <!-- ===================================================== -->
+    <g class="ico" transform="translate(18,28)" filter="url(#lhiCarve)" aria-label="Loaf of bread for bakers">
+      <rect class="swatch" x="0" y="0" width="64" height="64" rx="4"/>
+      <!-- crust body -->
+      <path class="accent" d="M11,44 C9,32 16,21 32,21 C48,21 55,32 53,44 C52,48 48,49 44,49 L20,49 C16,49 12,48 11,44 Z"
+            fill="#C0573B" stroke="#2B241D" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- carved diagonal slashes (cream gouge) -->
+      <g stroke="#FBF6EB" stroke-width="2.4" stroke-linecap="round" fill="none">
+        <path d="M22,40 21,33"/>
+        <path d="M30,42 29,32"/>
+        <path d="M38,42 37,32"/>
+        <path d="M45,40 44,34"/>
+      </g>
+      <!-- base shadow line -->
+      <path d="M16,49 L48,49" stroke="#2B241D" stroke-width="2.4" stroke-linecap="round" opacity="0.8"/>
+      <!-- two wheat grains scattered, hand-poked -->
+      <circle cx="15" cy="18" r="1.5" fill="#3D4D34"/>
+      <circle cx="50" cy="17" r="1.5" fill="#3D4D34"/>
+    </g>
+
+    <!-- ===================================================== -->
+    <!-- 2 · JAR / PRESERVES — green jar, pink fruit            -->
+    <!-- ===================================================== -->
+    <g class="ico" transform="translate(102,28)" filter="url(#lhiCarve)" aria-label="Jar of preserves">
+      <rect class="swatch" x="0" y="0" width="64" height="64" rx="4"/>
+      <!-- lid -->
+      <path d="M20,15 L44,15 L43,21 L21,21 Z" fill="#6B7A5C" stroke="#2B241D" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M24,12 L40,12 L40,15 L24,15 Z" fill="#6B7A5C" stroke="#2B241D" stroke-width="2.4" stroke-linejoin="round"/>
+      <!-- jar glass -->
+      <path d="M18,22 L46,22 C47,22 48,23 48,25 L48,49 C48,52 46,53 43,53 L21,53 C18,53 16,52 16,49 L16,25 C16,23 17,22 18,22 Z"
+            fill="#3D4D34" stroke="#2B241D" stroke-width="2.6" stroke-linejoin="round"/>
+      <!-- preserve fill (pink) inside, with a settled top line -->
+      <path class="accent-soft" d="M19,30 C24,28 40,28 45,30 L45,49 C45,51 44,51 42,51 L22,51 C20,51 19,51 19,49 Z"
+            fill="#E8B8B0" stroke="#2B241D" stroke-width="1.6" stroke-linejoin="round"/>
+      <!-- whole-fruit pips, cream gouge highlights -->
+      <circle cx="27" cy="38" r="2.4" fill="#C0573B" stroke="#2B241D" stroke-width="1.2"/>
+      <circle cx="37" cy="41" r="2.4" fill="#C0573B" stroke="#2B241D" stroke-width="1.2"/>
+      <circle cx="32" cy="46" r="2.2" fill="#C0573B" stroke="#2B241D" stroke-width="1.2"/>
+      <path d="M21,27 L43,27" stroke="#FBF6EB" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+    </g>
+
+    <!-- ===================================================== -->
+    <!-- 3 · BASKET — growers (terracotta weave, green produce) -->
+    <!-- ===================================================== -->
+    <g class="ico" transform="translate(186,28)" filter="url(#lhiCarve)" aria-label="Basket of produce for growers">
+      <rect class="swatch" x="0" y="0" width="64" height="64" rx="4"/>
+      <!-- produce mounded above the rim -->
+      <circle class="accent-soft" cx="24" cy="26" r="6.5" fill="#E8B8B0" stroke="#2B241D" stroke-width="2.2"/>
+      <circle cx="38" cy="24" r="7" fill="#6B7A5C" stroke="#2B241D" stroke-width="2.2"/>
+      <circle cx="44" cy="29" r="5" fill="#C0573B" stroke="#2B241D" stroke-width="2.2"/>
+      <!-- a leaf sprout -->
+      <path d="M31,21 C30,14 34,12 36,10 C36,15 35,19 33,21 Z" fill="#3D4D34" stroke="#2B241D" stroke-width="1.8" stroke-linejoin="round"/>
+      <!-- basket body -->
+      <path class="accent" d="M12,32 L52,32 L47,52 C46,53 45,53 44,53 L20,53 C19,53 18,53 17,52 Z"
+            fill="#C0573B" stroke="#2B241D" stroke-width="2.6" stroke-linejoin="round"/>
+      <!-- rim -->
+      <path d="M10,32 L54,32" stroke="#2B241D" stroke-width="3" stroke-linecap="round"/>
+      <!-- woven gouge lines (cream) -->
+      <g stroke="#FBF6EB" stroke-width="1.8" stroke-linecap="round" fill="none">
+        <path d="M22,36 L21,49"/>
+        <path d="M32,36 L32,50"/>
+        <path d="M42,36 L43,49"/>
+        <path d="M16,40 C28,43 36,43 48,40"/>
+        <path d="M17,46 C29,49 35,49 47,46"/>
+      </g>
+    </g>
+
+    <!-- ===================================================== -->
+    <!-- 4 · HERB / SEEDHEAD — healers (green sprig)            -->
+    <!-- ===================================================== -->
+    <g class="ico" transform="translate(270,28)" filter="url(#lhiCarve)" aria-label="Herb sprig and seedhead for healers">
+      <rect class="swatch" x="0" y="0" width="64" height="64" rx="4"/>
+      <!-- central stem -->
+      <path class="accent" d="M32,53 C32,44 32,30 32,15" fill="none" stroke="#3D4D34" stroke-width="3" stroke-linecap="round"/>
+      <!-- seedhead crown -->
+      <path class="accent" d="M32,15 C28,12 27,17 29,20 M32,15 C36,12 37,17 35,20 M32,13 C32,9 32,9 32,12"
+            fill="none" stroke="#3D4D34" stroke-width="2.6" stroke-linecap="round"/>
+      <circle class="accent" cx="32" cy="14" r="3.4" fill="#3D4D34" stroke="#2B241D" stroke-width="1.4"/>
+      <!-- paired leaves, cream vein gouges -->
+      <g fill="#6B7A5C" stroke="#2B241D" stroke-width="2.2" stroke-linejoin="round">
+        <path d="M32,26 C24,22 18,24 15,29 C22,31 29,31 32,28 Z"/>
+        <path d="M32,26 C40,22 46,24 49,29 C42,31 35,31 32,28 Z"/>
+        <path d="M32,38 C25,35 20,37 17,41 C23,43 29,43 32,40 Z"/>
+        <path d="M32,38 C39,35 44,37 47,41 C41,43 35,43 32,40 Z"/>
+      </g>
+      <g stroke="#FBF6EB" stroke-width="1.4" stroke-linecap="round" fill="none">
+        <path d="M30,27 L19,28"/>
+        <path d="M34,27 L45,28"/>
+        <path d="M30,39 L20,40"/>
+        <path d="M34,39 L44,40"/>
+      </g>
+    </g>
+
+    <!-- ===================================================== -->
+    <!-- 5 · CLASPED HANDS — makers (pink + green)             -->
+    <!-- ===================================================== -->
+    <g class="ico" transform="translate(60,108)" filter="url(#lhiCarve)" aria-label="Clasped working hands for makers">
+      <rect class="swatch" x="0" y="0" width="64" height="64" rx="4"/>
+      <!-- lower forearm/hand (green) coming from left -->
+      <path class="accent" d="M9,48 C16,46 22,42 28,38 C32,35 37,35 40,38 C43,41 41,45 37,46 C30,48 22,50 14,52 C11,52 8,51 9,48 Z"
+            fill="#6B7A5C" stroke="#2B241D" stroke-width="2.6" stroke-linejoin="round"/>
+      <!-- upper hand (pink) coming from right, clasping -->
+      <path class="accent-soft" d="M55,30 C48,28 42,26 35,28 C31,29 28,32 30,36 C32,40 37,40 41,38 C46,36 51,35 55,36 C58,36 58,31 55,30 Z"
+            fill="#E8B8B0" stroke="#2B241D" stroke-width="2.6" stroke-linejoin="round"/>
+      <!-- thumbs / clasp -->
+      <path d="M34,30 C33,26 35,24 38,24" fill="none" stroke="#2B241D" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M30,40 C29,44 31,47 34,47" fill="none" stroke="#2B241D" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- knuckle gouges (cream) -->
+      <g stroke="#FBF6EB" stroke-width="1.6" stroke-linecap="round" fill="none">
+        <path d="M42,33 L46,32"/>
+        <path d="M44,36 L48,35"/>
+        <path d="M20,46 L24,44"/>
+        <path d="M24,48 L28,46"/>
+      </g>
+    </g>
+
+    <!-- ===================================================== -->
+    <!-- 6 · MUSIC NOTE — the live set (terracotta)            -->
+    <!-- ===================================================== -->
+    <g class="ico" transform="translate(228,108)" filter="url(#lhiCarve)" aria-label="Music note for the live set">
+      <rect class="swatch" x="0" y="0" width="64" height="64" rx="4"/>
+      <!-- stems -->
+      <path class="accent" d="M26,46 L26,16 M44,42 L44,13" fill="none" stroke="#C0573B" stroke-width="3.4" stroke-linecap="round"/>
+      <!-- beam joining the two notes, slightly wobbled -->
+      <path class="accent" d="M26,16 C33,12 39,11 44,13 L44,18 C39,16 33,17 26,21 Z"
+            fill="#C0573B" stroke="#2B241D" stroke-width="2.4" stroke-linejoin="round"/>
+      <!-- note heads (filled, carved) -->
+      <ellipse class="accent" cx="22" cy="47" rx="7.5" ry="5.5" fill="#C0573B" stroke="#2B241D" stroke-width="2.6" transform="rotate(-18 22 47)"/>
+      <ellipse class="accent" cx="40" cy="43" rx="7.5" ry="5.5" fill="#C0573B" stroke="#2B241D" stroke-width="2.6" transform="rotate(-18 40 43)"/>
+      <!-- cream gouge highlight on each head -->
+      <path d="M18,46 C20,43 24,43 25,45" fill="none" stroke="#FBF6EB" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M36,42 C38,39 42,39 43,41" fill="none" stroke="#FBF6EB" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- two little sound ticks -->
+      <path d="M52,22 L56,20 M52,28 L57,27" stroke="#3D4D34" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+  </g>
+</svg>
