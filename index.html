@@ -198,6 +198,24 @@
     margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line);
   }
 
+  /* =================== FIRST-GATHERING GALLERY =================== */
+  .gallery { padding: 90px 0 96px; }
+  .gallery .sec-head { margin-bottom: 46px; }
+  .photo-grid { columns: 3; column-gap: 14px; }
+  .photo-grid img {
+    width: 100%; display: block; margin: 0 0 14px; border-radius: 6px;
+    border: 1px solid var(--line); box-shadow: 0 8px 20px rgba(43,36,29,0.10);
+    break-inside: avoid; transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .photo-grid img:hover { transform: translateY(-3px) rotate(-0.4deg); box-shadow: 0 16px 32px rgba(43,36,29,0.18); }
+  .gallery-credit {
+    margin-top: 30px; text-align: center; font-family: 'Fraunces', serif;
+    font-style: italic; font-size: 19px; color: var(--text-soft);
+  }
+  .gallery-credit .em { color: var(--terracotta); }
+  @media (max-width: 900px) { .photo-grid { columns: 2; } }
+  @media (max-width: 560px) { .photo-grid { columns: 1; } }
+
   /* =================== VENUE SHOWCASE =================== */
   .venue { padding: 18px 0 96px; }
   .venue-frame {
@@ -392,6 +410,31 @@
         <p>So we are doing it again, and again after that. On 2 August we return as the first harvest comes in — high summer, the fields turning gold, the first loaves on the table. For the people, by the people. From field to hearth, by many hands.</p>
         <div class="vision-sig">— Karina Clappison, founder &amp; field-keeper</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIRST GATHERING GALLERY -->
+<div class="seam"></div>
+<section class="band band-parch reveal">
+  <div class="wrap">
+    <div class="gallery">
+      <div class="sec-head">
+        <div class="sec-eyebrow">— How the first one went</div>
+        <h2 class="sec-title">Our first gathering, <span class="ital">in pictures.</span></h2>
+      </div>
+      <div class="photo-grid">
+        <img src="photos/g1.jpg" alt="The barn full of stalls and visitors under strings of fairy lights" loading="lazy">
+        <img src="photos/g2.jpg" alt="A sunny outdoor stall of fresh oyster mushrooms with a smiling crowd gathered round" loading="lazy">
+        <img src="photos/g3.jpg" alt="A maker at her stall of hand-painted wooden peg dolls" loading="lazy">
+        <img src="photos/g4.jpg" alt="The Sama Sama street-food horsebox serving bao and bowls at the market" loading="lazy">
+        <img src="photos/g5.jpg" alt="Hand-made dried-flower wreaths and besoms hanging at a stall" loading="lazy">
+        <img src="photos/g6.jpg" alt="A display of natural skincare, bath soaks and candles" loading="lazy">
+        <img src="photos/g7.jpg" alt="A natural skincare maker at her stall in the summer field" loading="lazy">
+        <img src="photos/g8.jpg" alt="The ice-cream van with children in the window and a happy customer" loading="lazy">
+        <img src="photos/g9.jpg" alt="The ZenDeLou holistic animal-calming and healing stall" loading="lazy">
+      </div>
+      <p class="gallery-credit">The Beverley Barn · 21 June 2026 — <span class="em">thank you, all of you.</span></p>
     </div>
   </div>
 </section>
